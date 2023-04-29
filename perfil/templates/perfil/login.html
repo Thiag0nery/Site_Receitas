@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container-flex-center">
+        <div class="container-login">
+            <form action="" method="POST" class="form-login">
+                <h1 class="texto-login">Login</h1>
+                <label for="id_username" class="label">Usuario</label>
+                <input type="text" id="id_username">
+    
+                <label for="id_password" class="label">Senha</label>
+                <input type="text" id="id_password">
+    
+                <div class="button-login">
+                    <button type="submit" class="btn-login">Entra</button>
+                </div>
+            </form>
+            <div class="container-criar-conta">
+                <p class="text-link-cadastro">Não tem uma conta ainda? <a href="{% url 'perfil:cadastro' %}">Clique aqui</a> para criar!</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{%extends 'base.html'%}
+{%block body %}
+    <header>
+        <div class="">logo</div>
+
+        <nav class="nav-bar">
+            <ul class="list-ul">
+                <li><a href="#">Receitas</a></li>
+                <li><a href="#">Perfil</a></li>
+                <li><a href="#">Categorias</a></li>
+                <li><a href="#">Publicar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container-post-flex">
+            {% for receita in receitas%}
+            <div class="post">
+                <img src="{{ receita.post_foto.url }}" alt="" class="img-receita">
+                <div class="post-text">
+                    <h1>{{receita.post_nome}}</h1>
+
+                    <h2> Feito por: {{receita.post_usuario_fk}}</h2>
+                </div>
+            </div>
+            {%endfor%}
+
+        </div>
+    </main>
+{%endblock%}

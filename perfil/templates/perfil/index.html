@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block body %}
+ <div class="container-flex-center">
+        <div class="container-login">
+            <form action="" method="POST" class="form-login">
+                {% csrf_token %}
+                <h1 class="texto-login">Login</h1>
+                <label for="id_username" class="label">Usuario</label>
+                {{usuario.username}}
+
+                <label for="id_password" class="label">Senha</label>
+                 {{usuario.password}}
+
+                <div class="button-login">
+                    <button type="submit" class="btn-login">Entra</button>
+                </div>
+            </form>
+            <div class="container-criar-conta">
+                <p class="text-link-cadastro">Não tem uma conta ainda? <a href="{% url 'perfil:cadastro' %}">Clique aqui</a> para criar!</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
