@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from . import forms
 from django.views import View
 from django.contrib.auth import login,authenticate
+from django.contrib.auth.models import User
 
 class BaseViews(View):
     templates_name = 'perfil/index.html'
@@ -11,9 +12,14 @@ class BaseViews(View):
         self.contexto = {
             'usuario': forms.UserForms(
                 data=self.request.POST or None
-            )
+            ),
+            'formulario': forms.Formulario(
+                data=self.request.POST or None
+            ),
         }
+
         self.usuario = self.contexto['usuario']
+        self.publicarReceita = self.contexto['formulario']
         self.page = render(self.request, self.templates_name, self.contexto)
 
     def get(self, *args, **kwargs):
@@ -40,3 +46,14 @@ class Cadastro(BaseViews):
         usuario.save()
 
         return redirect('perfil:login')
+
+class PublicarReceita(BaseViews):
+    templates_name = 'receitas/publicar.html'
+
+    def post(self, *args,  **kwargs):
+        self.idUsuario = get_object_or_404(User, username=self.request.user)
+        receita = self.publicarReceita.save(commit=False)
+        receita.post_usuario_fk = self.idUsuario
+        receita.save()
+
+        return redirect('receitas:homepage')

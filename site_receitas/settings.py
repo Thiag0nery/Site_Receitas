@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'receitas.apps.ReceitasConfig',
 ]
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -123,7 +124,7 @@ STATICFILES_DIRS = [
     BASE_DIR / 'templates/static'
 ]
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR/ 'media'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 
 # Default primary key field type
