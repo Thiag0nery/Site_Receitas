@@ -1,7 +1,7 @@
 {%extends 'base.html'%}
 {%block body %}
 {% include 'parcias/_header.html' %}
-<form method="POST" class="form-login">
+<form method="POST" class="form-login" enctype="multipart/form-data" >
 {% csrf_token %}
 
 
@@ -9,16 +9,32 @@
             <div class="nome-receita">
                 <label for="post_nome">Nome da receita: </label>
                 {{formulario.post_nome}}
+                {{formulario.errors.post_nome}}
             </div>
+
             {{formulario.post_foto}}
+             {% for message in messages %}
+        <div class="alert {{ message.tags }}" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+
+                 <label for="post_tempo" class="label-tempo-publicar">Tempo: </label>
+                   {{formulario.post_tempo}}
+                <p class="p-minutos">Minutos</p>
+
             <div class="block">
                 <label for="post_ingredientes" class="label-postar">Ingredietes:</label>
                 {{formulario.post_ingredientes}}
+                {{formulario.errors.post_ingredientes}}
+
 
             </div>
             <div class="block">
             <label for="post_preparo" class="label-postar">Modo de preparo:</label>
             {{formulario.post_preparo}}
+            {{publicarReceita.errors.post_preparo}}
 
             </div>
         </div>

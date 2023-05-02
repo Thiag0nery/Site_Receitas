@@ -2,21 +2,31 @@
 {% block body%}
     <div class="container-flex-center">
         <div class="container-login">
+
             <form action="" method="POST" class="form-login">
                 {% csrf_token %}
+
                 <h1 class="texto-login">Cadastro</h1>
+
                 <label for="id_username" class="label">Usuario</label>
                 {{usuario.username}}
+                {{usuario.errors.username}}
 
                 <label for="id_email" class="label">Email</label>
-                 {{usuario.email}}
+                {{usuario.email}}
+                {{usuario.errors.email}}
 
-                <label for="id_password2" class="label">Senha</label>
+                <label for="id_password" class="label">Senha</label>
                  {{usuario.password}}
+                {{usuario.errors.password}}
 
                 <label for="id_password2" class="label">Confirmar senha</label>
                 {{usuario.password2}}
-    
+                {{usuario.errors.password2}}
+
+
+
+
                 <div class="button-login">
                     <button type="submit" class="btn-login">Cadastre-se</button>
                 </div>

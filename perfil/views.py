@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect,get_object_or_404
+from django.contrib import messages
 from . import forms
 from django.views import View
 from django.contrib.auth import login,authenticate
@@ -40,6 +41,14 @@ class Login(BaseViews):
 class Cadastro(BaseViews):
     templates_name = 'perfil/cadastro.html'
     def post(self, *args,  **kwargs):
+        if not self.usuario.is_valid():
+            messages.error(
+                self.request,
+                self.usuario.errors
+            )
+
+            return self.page
+
         senha = self.request.POST.get('password')
         usuario = self.usuario.save(commit=False)
         usuario.set_password(senha)
@@ -51,9 +60,30 @@ class PublicarReceita(BaseViews):
     templates_name = 'receitas/publicar.html'
 
     def post(self, *args,  **kwargs):
+        if not self.publicarReceita.is_valid() :
+            messages.error(
+                self.request,
+                self.publicarReceita.errors
+            )
+
+            return self.page
+        if self.request.FILES.get('post_foto') == None :
+
+            messages.error(
+                self.request,
+                "Este campo é obrigatório"
+            )
+
+            return self.page
+
         self.idUsuario = get_object_or_404(User, username=self.request.user)
         receita = self.publicarReceita.save(commit=False)
         receita.post_usuario_fk = self.idUsuario
         receita.save()
+
+        messages.success(
+            self.request,
+            'A sua receita foi enviada para equipe de aprovação.'
+        )
 
         return redirect('receitas:homepage')

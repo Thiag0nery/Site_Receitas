@@ -2,7 +2,14 @@
 {%block body %}
 {% include 'parcias/_header.html' %}
     <main>
+        {% for message in messages %}
+            <div class="alert {{ message.tags }}" role="alert">
+            {{ message }}
+            </div>
+        {%endfor%}
+
         <div class="container-post-flex">
+             {{formulario.post_foto}}
             {% for receita in receitas%}
             {% if receita.post_publicado %}
             <div class="post">
