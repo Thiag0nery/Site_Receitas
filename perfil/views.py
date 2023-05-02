@@ -75,9 +75,10 @@ class PublicarReceita(BaseViews):
             )
 
             return self.page
-
+        self.foto = self.request.FILES.get('post_foto')
         self.idUsuario = get_object_or_404(User, username=self.request.user)
         receita = self.publicarReceita.save(commit=False)
+        receita.post_foto = self.foto
         receita.post_usuario_fk = self.idUsuario
         receita.save()
 

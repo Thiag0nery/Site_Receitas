@@ -9,12 +9,12 @@
         {%endfor%}
 
         <div class="container-post-flex">
-             {{formulario.post_foto}}
+
             {% for receita in receitas%}
             {% if receita.post_publicado %}
             <div class="post">
                 <a href="{% url 'receitas:detalhe' receita.post_codigo %}">
-                    <img src="" alt="" class="img-receita">
+                    <img src="{{ receita.post_foto.url }}" alt="" class="img-receita">
 
                 <div class="post-text">
                     <h1>{{receita.post_nome}}</h1>
