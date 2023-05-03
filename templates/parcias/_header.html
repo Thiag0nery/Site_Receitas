@@ -1,15 +1,16 @@
 {% load static %}
 <header>
-    <img class="img-logo" src="{% static 'Imagens/logotipo.png'%}" alt="">
+
 
 
         <nav class="nav-bar">
             <ul class="list-ul">
                 <li><a href="{% url 'receitas:homepage' %}">Home</a></li>
-                <!--
+
                 <li><a href="#">Perfil</a></li>
+                <img class="img-logo" src="{% static 'Imagens/logotipo.png'%}" alt="">
                 <li><a href="#">Categorias</a></li>
-                -->
+
                 <li><a href="{% url 'perfil:publicar' %}">Publicar</a></li>
             </ul>
         </nav>
