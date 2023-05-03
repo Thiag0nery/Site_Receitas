@@ -2,9 +2,16 @@
 {% block body %}
  <div class="container-flex-center">
         <div class="container-login">
-            <form action="" method="POST" class="form-login">
+            <div class="block-container style-container">
+
+                <form action="" method="POST" class="form-login">
                 {% csrf_token %}
                 <h1 class="texto-login">Login</h1>
+                    {% for message in messages %}
+            <div class="alert {{ message.tags }}" role="alert">
+            {{ message }}
+            </div>
+        {%endfor%}
                 <label for="id_username" class="label">Usuario</label>
                 {{usuario.username}}
 
@@ -18,6 +25,11 @@
             <div class="container-criar-conta">
                 <p class="text-link-cadastro">Não tem uma conta ainda? <a href="{% url 'perfil:cadastro' %}">Clique aqui</a> para criar!</p>
             </div>
+
+            </div>
+              <div class="img-background"></div>
+
         </div>
+
     </div>
 {% endblock %}

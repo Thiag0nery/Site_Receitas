@@ -26,17 +26,25 @@ class BaseViews(View):
     def get(self, *args, **kwargs):
         return self.page
 class Login(BaseViews):
+    templates_name = 'perfil/index.html'
     def post(self, *args,  **kwargs):
         usuario = self.request.POST.get('username')
         senha = self.request.POST.get('password')
 
         user = authenticate(
             self.request, username=usuario, password=senha)
-
-
+        print(bool(user))
+        if not user:
+            messages.error(
+             self.request,
+                "Usuario ou Senha incorretos"
+            )
+            return self.page
         login(self.request, user=user)
-
-
+        messages.success(
+            self.request,
+            "Login efetuado com sucesso"
+        )
         return redirect('receitas:homepage')
 class Cadastro(BaseViews):
     templates_name = 'perfil/cadastro.html'

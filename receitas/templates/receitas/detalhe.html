@@ -1,7 +1,7 @@
 {%extends 'base.html'%}
 {%block body %}
 {% include 'parcias/_header.html' %}
-    <main>
+    <main class="main-pagina">
         <div class="container-receita-detalhe">
             <h1 class="receita-detalhe-tituto">{{receita.post_nome}}</h1>
             <img src="{{ receita.post_foto.url }}" alt="" class="img-receita-detalhe">
@@ -14,9 +14,10 @@
 
 
             <h1>Ingredientes</h1>
-            <p class="receita-ingredientes">{{receita.post_ingredientes}}</p>
+            <textarea class="receita-ingrediente" disabled rows="25">{{receita.post_ingredientes}}</textarea>
             <h1>Modo de preparo</h1>
-            <p>{{receita.post_preparo}}</p>
+             <textarea class="receita-ingrediente" disabled rows="25">{{receita.post_preparo}}</textarea>
+
         </div>
     </main>
 {%endblock%}

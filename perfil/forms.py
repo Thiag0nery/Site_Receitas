@@ -12,10 +12,12 @@ class UserForms(forms.ModelForm):
         required=False,
         widget=forms.PasswordInput(),
         label='Senha',
+        help_text = 'A'
     )
     class Meta:
         model = User
         fields = ('username','password','email','password2')
+        help_texts = {'password2': 'A',}
     def clean(self):
         username_form = self.cleaned_data.get('username')
         password_form = self.cleaned_data.get('password')
