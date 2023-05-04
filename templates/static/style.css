@@ -57,7 +57,7 @@
     margin-top: 20px;
 }
 .btn-login{
-    margin: 37px auto;
+    margin: 2vh auto;
     text-align: center;
     width: 50%;
     padding: 3%;
@@ -105,9 +105,14 @@
 }
 .img-cadastro{
   width:100%!important;
+  height: auto!important;
 }
 .cadastro-usuario{
     width: 90%!important;
+    /*height: 72vh!important;*/
+}
+.container-cadastro-usuario{
+    height: 72vh!important;
 }
 /* HOMEPAGE */ 
 header{
@@ -117,7 +122,7 @@ header{
     background-color: #F2F2F2;
     justify-content: space-between;
     align-items: center;
-    margin-top: -104px;
+    margin-top: -13.4vh;
     padding: 0 2%;
     position: fixed;
     z-index: 9;
@@ -315,15 +320,71 @@ border: none;
 .homepage-background{
 background-image: url(Imagens/ovos-fritos-com-legumes.jpg);
     width: 100%;
-    height: 64vh;
+    height: 75vh;
+    display: flex;
     background-size: cover;
-    margin-top: 104px;
+    margin-top: 13.6vh;
     background-position: center;
+    background-repeat: no-repeat;
+    justify-content: center;
+    align-items: center;
+}
+.pesquisa{
+    width: 50%;
+    display:flex;
+    align-content: center;
+}
+.pesquisa-input{
+    width: 80%;
+    background-position: 8px;
+    border-radius: 20px 0px 0px 20px;
+    /* margin: 2px; */
+    outline: none;
+     font-size: 15pt;
+    padding: 3%;
+    border: 1px solid black;
+    height: 7vh;
+}
+.btn-pesquisa{
+    width: 12%;
+    border: 1px solid black;
+    height: 7vh;
+    /* padding: 0.5rem; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.icon-pesquisa{
+width: 67%;
+    height: 5.9vh;
+    border: none;
+    background-image: url(Imagens/lupa.png);
+    background-size: contain;
     background-repeat: no-repeat;
 }
 .main-pagina{
     margin-top:104px;
 }
 .margin-publicar{
-    margin-top:15px;
+   margin-top: -2.4vh;
+}
+input[type="file"]{
+    display:flex!important;
+}
+input#file-upload-button{
+background-color: white!important;
+}
+.label-foto{
+    padding: 20px 10px;
+    width: 21%;
+    text-transform: uppercase;
+    text-align: center;
+    display: block;
+    margin:0 auto;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    height: 6vh;
+
+    background-size: contain;
+    background-image: url(Imagens/envio.png);
 }
