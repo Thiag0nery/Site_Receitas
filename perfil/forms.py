@@ -44,6 +44,9 @@ class UserForms(forms.ModelForm):
         if email_banco:
             validation_error_msgs['email'] = error_msg_email_exists
 
+        if not email_form:
+            validation_error_msgs['email'] = error_msg_required_field
+
         if not password_form:
             validation_error_msgs['password'] = error_msg_required_field
 

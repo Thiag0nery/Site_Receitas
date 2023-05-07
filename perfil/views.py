@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect,get_object_or_404
 from django.contrib import messages
 from . import forms
 from django.views import View
-from django.contrib.auth import login,authenticate
+from django.contrib.auth import login,authenticate,logout
 from django.contrib.auth.models import User
 
 class BaseViews(View):
@@ -83,6 +83,7 @@ class PublicarReceita(BaseViews):
             )
 
             return self.page
+
         self.foto = self.request.FILES.get('post_foto')
         self.idUsuario = get_object_or_404(User, username=self.request.user)
         receita = self.publicarReceita.save(commit=False)
@@ -96,3 +97,11 @@ class PublicarReceita(BaseViews):
         )
 
         return redirect('receitas:homepage')
+class Logout(View):
+    def get(self, *args, **kwargs):
+
+
+        logout(self.request)
+
+
+        return redirect('perfil:login')

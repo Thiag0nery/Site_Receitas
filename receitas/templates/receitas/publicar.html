@@ -20,9 +20,18 @@
     {% endfor %}
 
 
-                 <label for="post_tempo" class="label-tempo-publicar">Tempo: </label>
+                 <div class="d-flex">
+                    <div class="tempo">
+                         <label for="post_tempo" class="label-tempo-publicar">Tempo: </label>
                    {{formulario.post_tempo}}
                 <p class="p-minutos">Minutos</p>
+                    </div>
+
+            <div class="categoria-publicar">
+                <label for="post_categoria_fk"> Qual categoria pertençe? </label>
+            {{formulario.post_categoria_fk}}
+            </div>
+                 </div>
 
             <div class="block">
                 <label for="post_ingredientes" class="label-postar">Ingredietes:</label>
@@ -45,4 +54,5 @@
     </div>
 
 </form>
+{% include 'parcias/_footer.html' %}
 {%endblock%}

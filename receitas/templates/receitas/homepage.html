@@ -1,11 +1,12 @@
 {%extends 'base.html'%}
 {%block body %}
+{% load static %}
 {% include 'parcias/_header.html' %}
     <div class="homepage-background">
         <form action="{% url 'receitas:buscar' %}" class="pesquisa" method="GET" >
-            <input type="text" class="pesquisa-input" name="nome" value="{{ request.GET.nome }}">
+            <input type="text" class="pesquisa-input" name="nome" value="{{ request.GET.nome }}" placeholder="Buscar...">
             <button type="submit" class="btn-pesquisa">
-              
+                <img src="{% static 'Imagens/lupa.png' %}" class="icon-pesquisa">
             </button>
         </form>
     </div>
@@ -22,9 +23,14 @@
             </div>
         <div class="container-post-flex">
 
-            {% for receita in receitas%}
+            {% if  not receitas %}
+                <p class="nada">Não foi encontrado nada</p>
+            {%endif%}
+
+            {% for receita in receitas %}
             {% if receita.post_publicado %}
             <div class="post">
+
                 <a href="{% url 'receitas:detalhe' receita.post_codigo %}">
                     <img src="{{ receita.post_foto.url }}" alt="" class="img-receita">
 
@@ -39,5 +45,8 @@
             {%endfor%}
 
         </div>
+
+
     </main>
+{% include 'parcias/_footer.html' %}
 {%endblock%}

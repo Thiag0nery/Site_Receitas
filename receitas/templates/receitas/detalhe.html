@@ -7,6 +7,10 @@
             <img src="{{ receita.post_foto.url }}" alt="" class="img-receita-detalhe">
             <p class="autor-receita">Por: {{receita.post_usuario_fk}}</p>
 
+            <div class="informacoes">
+                <p>Tempo: {{receita.post_tempo}} min</p>
+                 <p>Categoria: {{receita.post_categoria_fk}} </p>
+            </div>
             <div class="flex-linha">
                 <hr class="linha">
                 <hr class="linha">
@@ -14,10 +18,12 @@
 
 
             <h1>Ingredientes</h1>
-            <textarea class="receita-ingrediente" disabled rows="25">{{receita.post_ingredientes}}</textarea>
+            <textarea class="receita-ingrediente"  id="ingrediente" disabled rows="15">{{receita.post_ingredientes}}</textarea>
             <h1>Modo de preparo</h1>
-             <textarea class="receita-ingrediente" disabled rows="25">{{receita.post_preparo}}</textarea>
+             <textarea class="receita-ingrediente" id="preparo" disabled  rows="25">{{receita.post_preparo}}</textarea>
+
 
         </div>
     </main>
+{% include 'parcias/_footer.html' %}
 {%endblock%}
